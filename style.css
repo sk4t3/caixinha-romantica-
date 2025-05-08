@@ -1,0 +1,371 @@
+:root {
+    --bg-day: #fff5f0;
+    --bg-night: #0d0d2b;
+    --box-day: #ffe0d6;
+    --box-night: #2c2c54;
+    --text: #a34d6d;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--text);
+    transition: background 0.5s ease;
+    overflow-x: hidden;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .grid {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    gap: 30px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .box {
+    width: 130px;
+    height: 130px;
+    background-color: var(--box-day);
+    border-radius: 20px;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.616);
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .box:hover {
+    transform: scale(1.05);
+  }
+  
+  .box.aberta {
+    transform: rotateY(180deg);
+    background-color: #fff;
+    font-size: 1rem;
+    padding: 20px;
+    cursor: default;
+    width: auto;
+    height: auto;
+    max-width: 300px;
+  }
+  
+  .mensagem {
+    padding: 10px;
+    color: var(--text);
+    text-align: center;
+    white-space: pre-wrap;
+  }
+  
+  .timer {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fc6f5f;
+    margin-top: 10px;
+  }
+  
+  #coracoes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  .coracao {
+    position: absolute;
+    font-size: 2rem;
+    color: pink;
+    animation: subir 3s linear forwards;
+  }
+  
+  @keyframes subir {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+  }
+  
+  /* Fundo estrelado à noite */
+  #estrelas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* 🌤️ CÉU E NUVENS DE DIA */
+#ceu-dia {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #bde0fe, #ffffff);
+    z-index: -2;
+    overflow: hidden;
+    animation: deslizar 100s linear infinite;
+  }
+  
+  .sol {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffd700, #ffbb00);
+    border-radius: 50%;
+    box-shadow: 0 0 30px #ffd700;
+    animation: girar 60s linear infinite;
+  }
+  
+  .nuvem {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: moverNuvem 60s linear infinite;
+  }
+  
+  .nuvem::before,
+  .nuvem::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
+  
+  .nuvem1 {
+    top: 120px;
+    left: -200px;
+    width: 120px;
+    height: 60px;
+    animation-duration: 80s;
+  }
+  
+  .nuvem2 {
+    top: 200px;
+    left: -300px;
+    width: 180px;
+    height: 80px;
+    animation-duration: 100s;
+  }
+  
+  .nuvem1::before {
+    width: 60px;
+    height: 60px;
+    top: -20px;
+    left: 20px;
+  }
+  
+  .nuvem1::after {
+    width: 80px;
+    height: 80px;
+    top: -30px;
+    left: 60px;
+  }
+  
+  .nuvem2::before {
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    left: 40px;
+  }
+  
+  .nuvem2::after {
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: 100px;
+  }
+  
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes moverNuvem {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(200vw); }
+  }
+
+  .box-conteudo {
+    transform: rotateY(180deg);
+  }
+  /* Nuvens extras com diferentes tamanhos e velocidades */
+.nuvem3 {
+    top: 300px;
+    left: -250px;
+    width: 160px;
+    height: 70px;
+    animation-duration: 90s;
+  }
+  
+  .nuvem3::before {
+    width: 90px;
+    height: 90px;
+    top: -20px;
+    left: 30px;
+  }
+  
+  .nuvem3::after {
+    width: 70px;
+    height: 70px;
+    top: -20px;
+    left: 90px;
+  }
+  
+  .nuvem4 {
+    top: 100px;
+    left: -200px;
+    width: 140px;
+    height: 60px;
+    animation-duration: 120s;
+  }
+  
+  .nuvem4::before {
+    width: 70px;
+    height: 70px;
+    top: -25px;
+    left: 20px;
+  }
+  
+  .nuvem4::after {
+    width: 60px;
+    height: 60px;
+    top: -20px;
+    left: 80px;
+  }
+  
+  .nuvem5 {
+    top: 400px;
+    left: -180px;
+    width: 100px;
+    height: 50px;
+    animation-duration: 75s;
+  }
+  
+  .nuvem5::before {
+    width: 50px;
+    height: 50px;
+    top: -15px;
+    left: 15px;
+  }
+  
+  .nuvem5::after {
+    width: 40px;
+    height: 40px;
+    top: -10px;
+    left: 60px;
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  
+    .box {
+      width: 100px;
+      height: 100px;
+      font-size: 2rem;
+    }
+  
+    .box.aberta {
+      font-size: 0.9rem;
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .mensagem {
+      font-size: 0.95rem;
+    }
+  
+    .timer {
+      font-size: 1rem;
+    }
+  }
+  .grid {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  /* Estrelas e lua no tema noturno */
+#estrelas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(#1a1a40, #0d0d2b);
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#estrelas::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #fffacd, #f0e68c);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #fffacd;
+}
+
+/* Efeito de estrelas pontilhadas */
+#estrelas::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: piscarEstrelas 60s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes piscarEstrelas {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+  
+  
+  
+  
